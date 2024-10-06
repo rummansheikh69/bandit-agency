@@ -34,10 +34,10 @@ export default function Component() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const carouselImages = [
-    "/placeholder.svg?height=400&width=300&text=Community+Event+1",
-    "/placeholder.svg?height=400&width=300&text=Art+Workshop+2",
-    "/placeholder.svg?height=400&width=300&text=Music+Performance+3",
-    "/placeholder.svg?height=400&width=300&text=Family+Activity+4",
+    "https://academy-cdn.wedio.com/2022/05/art-department-in-film-production-wedio.jpg",
+    "https://img.freepik.com/premium-photo/film-directors-office-with-awards-business-office-hospital-background_1020697-459085.jpg",
+    "https://macksennettstudios.net/wp-content/uploads/2021/07/What-does-an-art-director-do-in-film.jpg",
+    "https://officesnapshots.com/wp-content/uploads/2020/07/mill-film-studio-offices-adelaide-3.jpg",
   ];
 
   useEffect(() => {
@@ -249,7 +249,7 @@ export default function Component() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card p-6 rounded-lg shadow-md text-center"
+              className="bg-card p-6 flex flex-col items-center rounded-lg shadow-md text-center"
             >
               {item.icon}
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
@@ -520,8 +520,8 @@ export default function Component() {
       </main>
 
       <footer className="bg-white text-primary-foreground p-6 mt-12">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center bg-primary py-10 px-4 rounded-lg">
-          <div className="text-sm mb-4 md:mb-0">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-end pb-6 bg-gradient-to-tl from-primary via-primary/85 to-primary/75 h-40 px-4 rounded-lg">
+          <div className="text-sm mb-4 md:mb-0 font-medium tracking-wide">
             &copy; 2024 Bandit. All rights reserved.
           </div>
           <nav className="flex space-x-4">
