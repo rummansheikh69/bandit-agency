@@ -522,7 +522,7 @@ export default function Component() {
       <footer className="bg-white text-primary-foreground p-6 mt-12">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-end pb-6 bg-gradient-to-tl from-primary via-primary/85 to-primary/75 h-40 px-4 rounded-lg">
           <div className="text-sm mb-4 md:mb-0 font-medium tracking-wide">
-            &copy; 2024 Bandit. All rights reserved.
+            &copy; 2024 Bandit. All rights reserved ok.
           </div>
           <nav className="flex space-x-4">
             {menuItems.map((item) => (
