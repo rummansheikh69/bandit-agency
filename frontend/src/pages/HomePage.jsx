@@ -84,18 +84,18 @@ export default function Component() {
     <div className="bg-transparent min-h-screen ">
       <Layout>
         {/* Hero section  */}
-        <main className=" px-4 md:px-0">
+        <main className="px-0">
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="   mb-8 h-max"
+            className="   mb-20 h-max"
           >
             <div className="md:flex items-center gap-10">
               <div className="md:w-full md:h-[70vh] ">
-                <div className="  mb-4 w-full h-full md:px-14 bg-gradient-to-t to-primary via-primary/60 from-transparent  p-4 flex flex-col gap-2 justify-between">
+                <div className="  mb-4 w-full h-full md:px-14 px-5 bg-gradient-to-t to-primary via-primary/60 from-transparent flex flex-col gap-2 justify-between">
                   <div>s</div>
-                  <div>
+                  <div className=" md:mt-0 mt-20 mb-10">
                     <h2 className=" text-3xl text-zinc-900 font-bold mb-4">
                       505BX
                     </h2>
