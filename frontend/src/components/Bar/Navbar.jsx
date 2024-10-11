@@ -45,9 +45,6 @@ function Navbar() {
     { name: "4Bronx", route: "/4bronx" },
     { name: "505 Gallery", route: "/gallery" },
     { name: "Small Business" },
-    { name: "Contact" },
-    { name: "Donate" },
-    { name: "Calendar", icon: <CalendarIcon className="w-4 h-4" /> },
   ];
 
   return (
@@ -105,9 +102,6 @@ function Navbar() {
                 >
                   <span>{item.icon}</span>
                   <span>{item.name}</span>
-                  {item.name === "Calendar" && (
-                    <ChevronDown className="w-4 h-4  transition-opacity" />
-                  )}
                   {item.name === "About" && (
                     <ChevronDown className="w-4 h-4  transition-opacity" />
                   )}
@@ -115,21 +109,6 @@ function Navbar() {
                     <ChevronDown className="w-4 h-4  transition-opacity" />
                   )}
                 </Link>
-                {item.name === "Calendar" && (
-                  <AnimatePresence>
-                    {showCalendar && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full right-0 mt-2 bg-card rounded-lg shadow-lg p-4"
-                      >
-                        <CustomCalendar />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                )}
 
                 {item.name === "About" && (
                   <AnimatePresence>
@@ -191,6 +170,41 @@ function Navbar() {
               </motion.div>
             ))}
           </nav>
+          {/* calendar button */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="relative"
+            onMouseEnter={() => setShowCalendar(true)}
+            onMouseLeave={() => setShowCalendar(false)}
+          >
+            <button
+              className={`flex items-center space-x-1 font-[400] ${
+                isScrolled
+                  ? "text-black hover:text-zinc-800"
+                  : "text-black hover:text-zinc-800"
+              }   transition-colors group `}
+            >
+              <span>
+                <CalendarIcon className="w-4 h-4" />
+              </span>
+              <span>Calendar</span>
+            </button>
+            <AnimatePresence>
+              {showCalendar && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full right-0 mt-2 bg-card rounded-lg shadow-lg p-4"
+                >
+                  <CustomCalendar />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
           <Sheet>
             <SheetTrigger asChild>
               <Button
