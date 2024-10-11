@@ -31,16 +31,16 @@ const CustomCalendar = () => {
         <button className=" p-1 hover:bg-zinc-100 rounded">
           <AiOutlineLeft
             onClick={prevMonth}
-            className="cursor-pointer h-4 w-4"
+            className="cursor-pointer text-black h-4 w-4"
           />
         </button>
-        <h2 className="text-[16px] font-medium">
+        <h2 className="text-[16px] text-black font-medium">
           {format(currentMonth, "MMMM yyyy")}
         </h2>
         <button className=" p-1 hover:bg-zinc-100 rounded">
           <AiOutlineRight
             onClick={nextMonth}
-            className="cursor-pointer h-4 w-4"
+            className="cursor-pointer text-black h-4 w-4"
           />
         </button>
       </div>
@@ -56,7 +56,10 @@ const CustomCalendar = () => {
     return (
       <div className="grid grid-cols-7 mb-2">
         {daysOfWeek.map((day, index) => (
-          <div key={index} className="text-center font-medium text-sm">
+          <div
+            key={index}
+            className="text-center text-black font-medium text-sm"
+          >
             {day}
           </div>
         ))}
@@ -106,20 +109,20 @@ const CustomCalendar = () => {
         day = addDays(day, 1);
       }
       rows.push(
-        <div className="grid grid-cols-7" key={day}>
+        <div className="grid grid-cols-7 text-black" key={day}>
           {days}
         </div>
       );
       days = [];
     }
 
-    return <div>{rows}</div>;
+    return <div className=" text-black">{rows}</div>;
   };
 
   const onDateClick = (day) => setSelectedDate(day);
 
   return (
-    <div className="w-72 max-w-md mx-auto p-4 border rounded-lg shadow">
+    <div className="md:w-72 w-56 max-w-md mx-auto p-4 border rounded-lg shadow bg-white">
       {renderHeader()}
       {renderDaysOfWeek()}
       {renderCells()}

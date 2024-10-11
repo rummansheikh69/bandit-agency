@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "./Layout";
 
 function Gallery() {
-  const maxPage = 8;
+  const maxPage = 12;
   const [page, setPage] = useState(maxPage);
   const HandleLoadingMore = () => {
     setPage(page + maxPage);
@@ -15,43 +15,87 @@ function Gallery() {
   const photos = [
     {
       id: 1,
-      image: "/placeholder.svg",
+      image: "/dominican-republic.jpg",
     },
     {
       id: 2,
-      image: "/placeholder.svg",
+      image: "/hester.jpg",
     },
     {
       id: 3,
-      image: "/placeholder.svg",
+      image: "/fade-2.jpg",
     },
     {
       id: 4,
-      image: "/placeholder.svg",
+      image: "/kiss-me.jpg",
     },
     {
       id: 5,
-      image: "/placeholder.svg",
+      image: "/celtic-cross-1.jpg",
     },
     {
       id: 6,
-      image: "/placeholder.svg",
+      image: "/the-grande.jpg",
     },
     {
       id: 7,
-      image: "/placeholder.svg",
+      image: "/magenta.jpeg",
     },
     {
       id: 8,
-      image: "/placeholder.svg",
+      image: "/jwf.png",
     },
     {
       id: 9,
-      image: "/placeholder.svg",
+      image: "/horses.jpeg",
     },
     {
       id: 10,
-      image: "/placeholder.svg",
+      image: "/tree.png",
+    },
+    {
+      id: 11,
+      image: "/taino.jpg",
+    },
+    {
+      id: 12,
+      image: "/elegance.jpg",
+    },
+    {
+      id: 13,
+      image: "/img-2815.jpg",
+    },
+    {
+      id: 14,
+      image: "/despair.jpg",
+    },
+    {
+      id: 15,
+      image: "/ginkgo.jpg",
+    },
+    {
+      id: 16,
+      image: "/image7.png",
+    },
+    {
+      id: 17,
+      image: "/wild.jpg",
+    },
+    {
+      id: 18,
+      image: "/mjoyce.jpg",
+    },
+    {
+      id: 19,
+      image: "/seige.jpg",
+    },
+    {
+      id: 20,
+      image: "/sandra.jpg",
+    },
+    {
+      id: 21,
+      image: "/jordan.jpeg",
     },
   ];
 
@@ -72,14 +116,13 @@ function Gallery() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="relative aspect-square rounded-lg overflow-hidden"
+                className="relative h-64 w-72 rounded-lg overflow-hidden"
               >
                 <img
                   src={photo?.image}
                   alt={`Community Artwork ${index + 1}`}
                   layout="fill"
-                  objectFit="cover"
-                  className="hover:scale-110 transition-transform duration-300"
+                  className="hover:scale-110 w-full h-full object-cover transition-transform duration-300"
                 />
               </motion.div>
             ))}

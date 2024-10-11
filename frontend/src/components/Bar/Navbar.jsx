@@ -6,6 +6,13 @@ import { CalendarIcon, ChevronDown, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 import CustomCalendar from "../ui/calendar";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
@@ -35,7 +42,7 @@ function Navbar() {
     { name: "Home", route: "/" },
     { name: "About" },
     { name: "KRVC" },
-    { name: "4Bronx" },
+    { name: "4Bronx", route: "/4bronx" },
     { name: "505 Gallery", route: "/gallery" },
     { name: "Small Business" },
     { name: "Contact" },
@@ -51,7 +58,7 @@ function Navbar() {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={`fixed  md:mt-5 xl:container mx-auto w-96 md:w-full px-5 rounded-lg p-5 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-primary/70 backdrop-blur-lg shadow-lg"
+            ? "bg-zinc-200 bg-opacity-30 border border-zinc-300 text-black backdrop-blur-lg shadow-lg"
             : "bg-white text-black"
         }`}
       >
@@ -61,7 +68,7 @@ function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className={`text-3xl font-bold ${
-              isScrolled ? "text-white" : "text-black"
+              isScrolled ? "text-black" : "text-black"
             } `}
           >
             505BX
@@ -90,9 +97,9 @@ function Navbar() {
               >
                 <Link
                   to={item.route}
-                  className={`flex items-center space-x-1 ${
+                  className={`flex items-center space-x-1 font-[400] ${
                     isScrolled
-                      ? "text-white hover:text-secondary"
+                      ? "text-black hover:text-zinc-800"
                       : "text-black hover:text-zinc-800"
                   }   transition-colors group `}
                 >
@@ -202,33 +209,55 @@ function Navbar() {
               side="right"
               className="bg-primary text-primary-foreground"
             >
-              <nav className="flex flex-col space-y-4 mt-8">
+              <nav className="flex flex-col gap-3 mt-8">
                 <Link to="/" className=" tracking-wide text-[16px]">
                   Home
                 </Link>
-                <div className="collapse rounded-[0px] p-0 m-0">
-                  {/* Checkbox for toggle behavior */}
-                  <input type="checkbox" className="peer p-0 m-0" />
-                  <div className="collapse-title text-[16px] p-0 m-0 h-auto leading-none">
-                    Click
-                  </div>
-                  <div className="collapse-content h-0 overflow-hidden peer-checked:h-auto peer-checked:ml-3 p-0 m-0 transition-all duration-300">
-                    <Link className="p-0 m-0">News</Link>
-                  </div>
+                <div>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>About</AccordionTrigger>
+                      <AccordionContent>
+                        <Link to="/news">News</Link>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+                <div>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-2">
+                      <AccordionTrigger>KRVC</AccordionTrigger>
+                      <AccordionContent>
+                        <div className=" flex flex-col gap-2">
+                          <Link to="/news">Whats new at KRVC</Link>
+                          <Link to="/news">KRVC x SBS</Link>
+                          <Link to="/news">KRVC Productions</Link>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 </div>
 
                 <Link to="/" className=" tracking-wide">
-                  Home
+                  4Bronx
+                </Link>
+                <Link to="/gallery" className=" tracking-wide">
+                  505 Gallery
                 </Link>
                 <Link to="/" className=" tracking-wide">
-                  Home
+                  Small Business
                 </Link>
-                <Link to="/" className=" tracking-wide">
-                  Home
-                </Link>
-                <Link to="/" className=" tracking-wide">
-                  Home
-                </Link>
+
+                <div>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Calendar</AccordionTrigger>
+                      <AccordionContent>
+                        <CustomCalendar />
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
