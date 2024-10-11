@@ -81,39 +81,35 @@ export default function Component() {
   const [showButton, setShowButton] = useState(true);
 
   return (
-    <div className="bg-white min-h-screen ">
+    <div className="bg-transparent min-h-screen ">
       <Layout>
         {/* Hero section  */}
-        <main className=" p-4 md:px-12 lg:px-28 xl:px-10 pt-24">
+        <main className=" px-4 md:px-0">
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-card p-6 rounded-lg shadow-lg mb-8 overflow-hidden"
+            className="   mb-8 h-max"
           >
             <div className="md:flex items-center gap-10">
-              <div className="md:w-1/2">
-                <h2 className="text-3xl font-bold mb-4">
-                  Welcome to ArtsCommunityHub
-                </h2>
-                <marquee className="text-muted-foreground font-medium mb-4">
-                  Your vibrant community space for arts, events, and family
-                  activities. Join us for exciting workshops, performances, and
-                  creative experiences!
-                </marquee>
-                <div className="  mb-4 rounded-lg w-full border border-zinc-200 bg-gradient-to-tl to-primary/60 via-primary/80 from-primary shadow-2xl p-4 flex flex-col gap-2">
-                  <h2 className=" text-3xl text-white font-bold mb-4">505BX</h2>
-                  <p className="text-white mb-4">
-                    A community space for work and play located in the heart of
-                    the Riverdale/Kingsbridge community
-                  </p>
+              <div className="md:w-full md:h-[70vh] ">
+                <div className="  mb-4 w-full h-full md:px-14 bg-gradient-to-t to-primary via-primary/60 from-transparent  p-4 flex flex-col gap-2 justify-between">
+                  <div>s</div>
+                  <div>
+                    <h2 className=" text-3xl text-zinc-900 font-bold mb-4">
+                      505BX
+                    </h2>
+                    <p className="text-zinc-800 mb-4">
+                      A community space for work and play located in the heart
+                      of the Riverdale/Kingsbridge community
+                    </p>
+                    <Button className="bg-primary w-max text-primary-foreground hover:bg-primary/90">
+                      Explore Events
+                    </Button>
+                  </div>
                 </div>
-
-                <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  Explore Events
-                </Button>
               </div>
-              <div className="md:w-1/2 mt-4 md:mt-0 h-[400px] overflow-hidden rounded-lg">
+              {/* <div className="md:w-1/2 mt-4 md:mt-0 h-[400px] overflow-hidden rounded-lg">
                 <motion.div
                   animate={{ y: `-${currentImageIndex * 100}%` }}
                   transition={{ duration: 0.5 }}
@@ -130,7 +126,7 @@ export default function Component() {
                     />
                   ))}
                 </motion.div>
-              </div>
+              </div> */}
             </div>
           </motion.section>
 

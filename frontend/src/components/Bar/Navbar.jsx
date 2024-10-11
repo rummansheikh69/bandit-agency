@@ -56,7 +56,7 @@ function Navbar() {
         className={`fixed  md:mt-5 xl:container mx-auto w-96 md:w-full px-5 rounded-lg p-5 top-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-zinc-200 bg-opacity-30 border border-zinc-300 text-black backdrop-blur-lg shadow-lg"
-            : "bg-white text-black"
+            : "bg-transparent text-white"
         }`}
       >
         <div className="container mx-auto flex items-center justify-between ">
@@ -65,7 +65,7 @@ function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className={`text-3xl font-bold ${
-              isScrolled ? "text-black" : "text-black"
+              isScrolled ? "text-black" : "text-white"
             } `}
           >
             505BX
@@ -96,8 +96,8 @@ function Navbar() {
                   to={item.route}
                   className={`flex items-center space-x-1 font-[400] ${
                     isScrolled
-                      ? "text-black hover:text-zinc-800"
-                      : "text-black hover:text-zinc-800"
+                      ? "text-black hover:text-zinc-700"
+                      : "text-white hover:text-zinc-300"
                   }   transition-colors group `}
                 >
                   <span>{item.icon}</span>
@@ -182,8 +182,8 @@ function Navbar() {
             <button
               className={`flex items-center space-x-1 font-[400] ${
                 isScrolled
-                  ? "text-black hover:text-zinc-800"
-                  : "text-black hover:text-zinc-800"
+                  ? "text-black hover:text-zinc-700"
+                  : "text-white hover:text-zinc-300"
               }   transition-colors group `}
             >
               <span>
