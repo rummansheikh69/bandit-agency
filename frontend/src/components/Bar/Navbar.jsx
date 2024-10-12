@@ -22,7 +22,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 400);
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -122,7 +122,7 @@ function Navbar() {
                       >
                         <div className=" flex flex-col gap-2">
                           <Link to="/" className="">
-                            <div className=" w-full  px-2 cursor-pointer py-1 hover:bg-zinc-100">
+                            <div className=" w-full text-black px-2 cursor-pointer py-1 hover:bg-zinc-100">
                               News
                             </div>
                           </Link>
@@ -148,17 +148,17 @@ function Navbar() {
                       >
                         <div className=" flex flex-col gap-2">
                           <Link to="/" className="">
-                            <div className=" w-full  px-2 cursor-pointer py-1 hover:bg-zinc-100">
+                            <div className=" w-full text-black  px-2 cursor-pointer py-1 hover:bg-zinc-100">
                               What's New At KRVC
                             </div>
                           </Link>
                           <Link to="/" className="">
-                            <div className=" w-full  px-2 py-1 cursor-pointer hover:bg-zinc-100">
+                            <div className=" w-full text-black  px-2 py-1 cursor-pointer hover:bg-zinc-100">
                               KRVC x SBS
                             </div>
                           </Link>
                           <Link to="/" className="">
-                            <div className=" w-full  px-2 py-1 cursor-pointer hover:bg-zinc-100">
+                            <div className=" w-full text-black  px-2 py-1 cursor-pointer hover:bg-zinc-100">
                               KRVC Productions
                             </div>
                           </Link>

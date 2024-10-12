@@ -27,6 +27,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { Link } from "react-router-dom";
 import Layout from "./Layout";
+import Slider from "@/components/home/Slider";
 
 export default function Component() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -92,20 +93,25 @@ export default function Component() {
             className="   mb-20 h-max"
           >
             <div className="md:flex items-center gap-10">
-              <div className="md:w-full md:h-[70vh] ">
-                <div className="  mb-4 w-full h-full md:px-14 px-5 bg-gradient-to-t to-primary via-primary/60 from-transparent flex flex-col gap-2 justify-between">
+              <div className="md:w-full h-[70vh] md:h-screen ">
+                <div className="  mb-4 w-full h-full md:px-14 px-5 bg-zinc-900 flex flex-col gap-2 justify-between">
                   <div>s</div>
-                  <div className=" md:mt-0 mt-20 mb-10">
-                    <h2 className=" text-3xl text-zinc-900 font-bold mb-4">
+                  <div className=" md:mt-0 mt-20 mb-20">
+                    <h2 className=" text-3xl text-zinc-200 font-bold mb-4">
                       505BX
                     </h2>
-                    <p className="text-zinc-800 mb-4">
+                    <p className="text-zinc-200 mb-4">
                       A community space for work and play located in the heart
                       of the Riverdale/Kingsbridge community
                     </p>
-                    <Button className="bg-primary w-max text-primary-foreground hover:bg-primary/90">
-                      Explore Events
-                    </Button>
+                    <div className=" flex items-center gap-3">
+                      <Button className="bg-zinc-200 w-max text-zinc-900 hover:bg-primary/90">
+                        Contact
+                      </Button>
+                      <Button className="bg-zinc-200 w-max text-zinc-900 hover:bg-primary/90">
+                        Donate
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -130,44 +136,42 @@ export default function Component() {
             </div>
           </motion.section>
 
+          {/* about us */}
+
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-8 mb-12"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mb-12 md:px-10 px-2"
           >
-            {[
-              {
-                title: "Art Workshops",
-                icon: <Palette className="w-12 h-12 mb-4 text-primary" />,
-                description:
-                  "Unleash your creativity with our diverse range of art workshops for all ages and skill levels.",
-              },
-              {
-                title: "Live Performances",
-                icon: <Music className="w-12 h-12 mb-4 text-primary" />,
-                description:
-                  "Experience the magic of live music, theater, and dance performances from local and visiting artists.",
-              },
-              {
-                title: "Family Fun",
-                icon: <Users className="w-12 h-12 mb-4 text-primary" />,
-                description:
-                  "Engage in exciting family-friendly activities, from interactive storytelling to hands-on craft sessions.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card p-6 flex flex-col items-center rounded-lg shadow-md text-center"
-              >
-                {item.icon}
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </motion.div>
-            ))}
+            <div className=" md:grid grid-cols-2 gap-20">
+              <div className=" w-full ">
+                <h1 className=" font-semibold text-3xl">About 505 BX</h1>
+                <div className=" mt-5">
+                  <p className=" text-[17px] font-medium text-zinc-700">
+                    505BX is a community space for work and play located in the
+                    heart of the Riverdale/Kingsbridge community at 505 West
+                    236th Street. It is the work and event space for KRVC,
+                    Gallery 505, KRVC Productions and The 4Bronx Project. Other
+                    groups use the space for small events and meetings. In
+                    addition to the small events KRVC and 4Bronx produce at
+                    505BX, they produce larger events throughout our community.{" "}
+                    <br /> <br />
+                    <b>Our large funders include:</b> Empire State Development,
+                    NYC Department of Youth & Community Development, NYC
+                    Department of Cultural Affairs, NYS Department of Family and
+                    Children’s Services, State Senator Alessandra Biaggi, State
+                    Senator Gustavo Rivera, Assemblyman Jeff Dinowitz, Council
+                    Member Eric Dinowitz, NewYork-Presbyterian Hospital, River
+                    Spring Living/Hebrew Home at Riverdale, TD Bank, Douglas
+                    Elliman Real Estate and Ridgewood Savings Bank.
+                  </p>
+                </div>
+              </div>
+              <div className=" w-full">
+                <Slider />
+              </div>
+            </div>
           </motion.section>
 
           <motion.section
