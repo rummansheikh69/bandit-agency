@@ -241,7 +241,7 @@ export default function Component() {
             </div>
           </motion.section>
 
-          <motion.section
+          {/* <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
@@ -269,7 +269,7 @@ export default function Component() {
                 <Button variant="outline">View Artist Profile</Button>
               </div>
             </div>
-          </motion.section>
+          </motion.section> */}
 
           <motion.section
             initial={{ opacity: 0, y: 20 }}
