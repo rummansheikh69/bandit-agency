@@ -29,9 +29,12 @@ import { Link } from "react-router-dom";
 import Layout from "./Layout";
 import Slider from "@/components/home/Slider";
 
+import { useDisclosure } from "@mantine/hooks";
+import { Modal } from "@mantine/core";
+
 export default function Component() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [opened, { open, close }] = useDisclosure(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
   const carouselImages = [
@@ -105,16 +108,80 @@ export default function Component() {
                       of the Riverdale/Kingsbridge community
                     </p>
                     <div className=" flex items-center gap-3">
-                      <Button className="bg-zinc-200 w-max text-zinc-900 hover:bg-primary/90">
+                      <Button
+                        onClick={open}
+                        className="bg-zinc-200 w-max text-zinc-900 hover:bg-zinc-100 font-medium"
+                      >
                         Contact
                       </Button>
-                      <Button className="bg-zinc-200 w-max text-zinc-900 hover:bg-primary/90">
+                      <Button className="bg-zinc-200 w-max text-zinc-900 hover:bg-zinc-100 font-medium">
                         Donate
                       </Button>
                     </div>
                   </div>
                 </div>
               </div>
+              <Modal
+                centered
+                opened={opened}
+                onClose={close}
+                size={"xl"}
+                title="Contact Us"
+              >
+                <section className="bg-card p-6 rounded-lg shadow-lg">
+                  <div className="md:flex md:space-x-8">
+                    <div className="md:w-1/2 mb-6 md:mb-0">
+                      <form className="space-y-4">
+                        <Input type="text" placeholder="Your Name" />
+                        <Input type="email" placeholder="Your Email" />
+                        <Textarea placeholder="Your Message" className="h-32" />
+                        <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                          Send Message
+                        </Button>
+                      </form>
+                    </div>
+                    <div className="md:w-1/2">
+                      <h4 className="text-xl font-semibold mb-4">Visit Us</h4>
+                      <div className="space-y-2">
+                        <p className="flex items-center">
+                          <MapPin className="w-5 h-5 mr-2" /> 123 Community Ave,
+                          Artsville, AC 12345
+                        </p>
+                        <p className="flex items-center">
+                          <Phone className="w-5 h-5 mr-2" /> (123) 456-7890
+                        </p>
+                        <p className="flex items-center">
+                          <Mail className="w-5 h-5 mr-2" /> info@bandit.com
+                        </p>
+                        <p className="flex items-center">
+                          <Clock className="w-5 h-5 mr-2" /> Mon-Fri: 9AM-7PM,
+                          Sat-Sun: 10AM-5PM
+                        </p>
+                      </div>
+                      <div className="flex space-x-4 mt-6">
+                        <a
+                          href="#"
+                          className="text-primary hover:text-primary/80"
+                        >
+                          <Facebook className="w-6 h-6" />
+                        </a>
+                        <a
+                          href="#"
+                          className="text-primary hover:text-primary/80"
+                        >
+                          <Twitter className="w-6 h-6" />
+                        </a>
+                        <a
+                          href="#"
+                          className="text-primary hover:text-primary/80"
+                        >
+                          <Instagram className="w-6 h-6" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </Modal>
               {/* <div className="md:w-1/2 mt-4 md:mt-0 h-[400px] overflow-hidden rounded-lg">
                 <motion.div
                   animate={{ y: `-${currentImageIndex * 100}%` }}
@@ -170,95 +237,6 @@ export default function Component() {
               </div>
               <div className=" w-full">
                 <Slider />
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12"
-          >
-            <h3 className="text-2xl font-semibold mb-6">Upcoming Events</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "Watercolor Masterclass",
-                  date: "Saturday, 10:00 AM",
-                  image: "/placeholder.svg?height=200&width=300",
-                },
-                {
-                  title: "Family Movie Night",
-                  date: "Friday, 7:00 PM",
-                  image: "/placeholder.svg?height=200&width=300",
-                },
-                {
-                  title: "Local Band Showcase",
-                  date: "Saturday, 8:00 PM",
-                  image: "/placeholder.svg?height=200&width=300",
-                },
-              ].map((event, index) => (
-                <motion.div
-                  key={event.title}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="bg-card rounded-lg shadow-md overflow-hidden"
-                >
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    width={300}
-                    height={200}
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="p-4">
-                    <h4 className="font-bold mb-2">{event.title}</h4>
-                    <p className="text-sm text-muted-foreground">
-                      {event.date}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="mb-12 bg-primary text-primary-foreground p-6 rounded-lg shadow-lg"
-          >
-            <h3 className="text-2xl font-semibold mb-6">Get Involved</h3>
-            <div className="md:flex md:space-x-8">
-              <div className="md:w-1/2 mb-6 md:mb-0">
-                <h4 className="text-xl font-semibold mb-4">
-                  Volunteer Opportunities
-                </h4>
-                <p className="mb-4">
-                  Join our community of volunteers and help make a difference in
-                  the arts scene. We have various roles available, from event
-                  coordination to workshop assistance.
-                </p>
-                <Button variant="secondary">Learn More</Button>
-              </div>
-              <div className="md:w-1/2">
-                <h4 className="text-xl font-semibold mb-4">
-                  Newsletter Signup
-                </h4>
-                <p className="mb-4">
-                  Stay updated with our latest events, workshops, and community
-                  news. Subscribe to our newsletter for weekly updates.
-                </p>
-                <form className="flex space-x-2">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="bg-primary-foreground text-primary"
-                  />
-                  <Button variant="secondary">Subscribe</Button>
-                </form>
               </div>
             </div>
           </motion.section>
@@ -335,56 +313,46 @@ export default function Component() {
             </div>
           </motion.section>
 
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.4 }}
-            className="bg-card p-6 rounded-lg shadow-lg"
-          >
-            <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
-            <div className="md:flex md:space-x-8">
-              <div className="md:w-1/2 mb-6 md:mb-0">
-                <form className="space-y-4">
-                  <Input type="text" placeholder="Your Name" />
-                  <Input type="email" placeholder="Your Email" />
-                  <Textarea placeholder="Your Message" className="h-32" />
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                    Send Message
-                  </Button>
-                </form>
-              </div>
-              <div className="md:w-1/2">
-                <h4 className="text-xl font-semibold mb-4">Visit Us</h4>
-                <div className="space-y-2">
-                  <p className="flex items-center">
-                    <MapPin className="w-5 h-5 mr-2" /> 123 Community Ave,
-                    Artsville, AC 12345
+          <div className=" px-2 md:px-10">
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="mb-12 bg-primary text-primary-foreground p-6 rounded-lg shadow-lg"
+            >
+              <div className="md:flex md:space-x-8">
+                <div className="md:w-1/2 mb-6 md:mb-0">
+                  <h4 className="text-xl font-semibold mb-4">
+                    Volunteer Opportunities
+                  </h4>
+                  <p className="mb-4">
+                    Join our community of volunteers and help make a difference
+                    in the arts scene. We have various roles available, from
+                    event coordination to workshop assistance.
                   </p>
-                  <p className="flex items-center">
-                    <Phone className="w-5 h-5 mr-2" /> (123) 456-7890
-                  </p>
-                  <p className="flex items-center">
-                    <Mail className="w-5 h-5 mr-2" /> info@bandit.com
-                  </p>
-                  <p className="flex items-center">
-                    <Clock className="w-5 h-5 mr-2" /> Mon-Fri: 9AM-7PM,
-                    Sat-Sun: 10AM-5PM
-                  </p>
+                  <Button variant="secondary">Learn More</Button>
                 </div>
-                <div className="flex space-x-4 mt-6">
-                  <a href="#" className="text-primary hover:text-primary/80">
-                    <Facebook className="w-6 h-6" />
-                  </a>
-                  <a href="#" className="text-primary hover:text-primary/80">
-                    <Twitter className="w-6 h-6" />
-                  </a>
-                  <a href="#" className="text-primary hover:text-primary/80">
-                    <Instagram className="w-6 h-6" />
-                  </a>
+                <div className="md:w-1/2">
+                  <h4 className="text-xl font-semibold mb-4">
+                    Newsletter Signup
+                  </h4>
+                  <p className="mb-4">
+                    Stay updated with our latest events, workshops, and
+                    community news. Subscribe to our newsletter for weekly
+                    updates.
+                  </p>
+                  <form className="flex space-x-2">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="bg-primary-foreground text-primary"
+                    />
+                    <Button variant="secondary">Subscribe</Button>
+                  </form>
                 </div>
               </div>
-            </div>
-          </motion.section>
+            </motion.section>
+          </div>
         </main>
       </Layout>
     </div>
